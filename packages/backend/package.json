@@ -5,15 +5,24 @@
   "main": "build/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node build/index.js"
+    "start": "tsc -p tsconfig.json && node build/index.js",
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./index.ts"
   },
   "author": "Brian D Pham",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^4.15.0"
+    "@fastify/formbody": "^7.4.0",
+    "@prisma/client": "^4.13.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.13",
+    "ts-node": "^10.9.1",
+    "nodemon": "^2.0.22",
+    "prisma": "^4.13.0",
     "typescript": "^5.0.4"
   }
 }

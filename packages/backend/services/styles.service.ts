@@ -11,6 +11,15 @@ export async function getAllForUser(userId: string) {
   return styles;
 }
 
+export async function getStyle(styleId: number) {
+  const style = await prisma.style.findUnique({
+    where: {
+      id: styleId,
+    },
+  });
+  return style;
+}
+
 // This function creates a new style record in the database.
 export async function postStyle(
   name: string,
@@ -22,6 +31,15 @@ export async function postStyle(
       name,
       description,
       userId,
+    },
+  });
+  return style;
+}
+
+export async function deleteStyle(styleId: number) {
+  const style = await prisma.style.delete({
+    where: {
+      id: styleId,
     },
   });
   return style;

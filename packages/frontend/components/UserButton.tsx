@@ -15,7 +15,9 @@ function Header() {
       </SignedIn>
       <SignedOut>
         {/* Signed out users get sign in button */}
-        <SignInButton />
+        <a className="btn btn-primary">
+          <SignInButton />
+        </a>
       </SignedOut>
     </header>
   );

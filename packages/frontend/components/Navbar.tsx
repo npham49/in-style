@@ -1,7 +1,8 @@
+"use client";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import User from "./User";
 
 export function MainNav({
   className,
@@ -40,7 +41,7 @@ export function MainNav({
           </Link>
         </nav>
         <div className="ml-auto flex items-center space-x-4">
-          <Button variant="outline">Sign in</Button>
+          <User />
         </div>
       </div>
     </div>

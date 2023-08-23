@@ -11,7 +11,7 @@ function Header() {
     <header style={{ display: "flex", justifyContent: "space-between" }}>
       <SignedIn>
         {/* Mount the UserButton component */}
-        <UserButton />
+        <UserButton afterSignOutUrl="/" />
       </SignedIn>
       <SignedOut>
         {/* Signed out users get sign in button */}
@@ -23,8 +23,8 @@ function Header() {
   );
 }
 
-function MyApp({ pageProps }: any) {
+function User({ pageProps }: any) {
   return <Header />;
 }
 
-export default MyApp;
+export default User;

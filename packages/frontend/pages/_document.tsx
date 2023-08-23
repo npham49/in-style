@@ -3,7 +3,7 @@ import { MainNav } from "@/components/Navbar";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" data-theme="luxury">
       <Head />
       <body>
         <MainNav className="mx-6" />

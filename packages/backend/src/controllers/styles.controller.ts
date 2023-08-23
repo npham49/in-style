@@ -18,6 +18,11 @@ type PutStyleRequest = FastifyRequest<{
   Params: { id: string };
 }>;
 
+type DeleteStyleRequest = FastifyRequest<{
+  Body: { userId: string };
+  Params: { styleId: string };
+}>;
+
 // Get all styles for a user
 export async function getAllForUser(
   request: GetStyleRequest,

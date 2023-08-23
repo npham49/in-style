@@ -13,6 +13,8 @@ async function stylesRoutes(fastify: FastifyInstance, options: any) {
   // The second route is a POST request to the path "/". The postStyle() function is called when the
   // route is invoked.
   fastify.post("/", stylesController.postStyle);
+  fastify.put("/:id", stylesController.putStyle);
+  fastify.delete("/:id", stylesController.deleteStyle);
 }
 
 module.exports = stylesRoutes;

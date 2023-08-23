@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "tsc -p tsconfig.json && node build/index.js",
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./index.ts"
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts"
   },
   "author": "Brian D Pham",
   "license": "ISC",

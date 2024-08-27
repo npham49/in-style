@@ -12,19 +12,21 @@ func (s *FiberServer) RegisterFiberRoutes() {
 
 	s.App.Get("/health", s.healthHandler)
 	s.App.Get("/login/:provider", func(ctx *fiber.Ctx) error {
-		if gothUser, err := goth_fiber.CompleteUserAuth(ctx); err == nil {
-			return ctx.SendString(gothUser.Email)
-		} else {
-			return goth_fiber.BeginAuthHandler(ctx)
+		authUrl, authErr := goth_fiber.GetAuthURL(ctx)
+		if authErr != nil {
+			log.Fatal(authErr)
+			ctx.Context().Error("Internal Server Error", 500)
 		}
+		return ctx.Redirect(authUrl)
 	})
 	s.App.Get("/auth/callback/:provider", func(ctx *fiber.Ctx) error {
 		user, err := goth_fiber.CompleteUserAuth(ctx)
 		if err != nil {
 			log.Fatal(err)
+			ctx.Context().Error("Internal Server Error", 500)
 		}
 
-		return ctx.SendString(user.Email)
+		return ctx.Redirect("http://localhost:5173/"+"?token="+user.Email, 302)
 	})
 	s.App.Get("/logout", func(ctx *fiber.Ctx) error {
 		if err := goth_fiber.Logout(ctx); err != nil {
